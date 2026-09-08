@@ -30,13 +30,17 @@ def dfs_search(path, file_name, result=None):
 def bfs_search(path, file_name):
     list_dir = [path.absolute()]
     while len(list_dir) != 0:
-        for item in list_dir[0].iterdir():
-            if item.is_dir():
-                list_dir.append(item.absolute())
-            elif item.is_file():
-                if item.name == file_name:
-                    return item.absolute()
+        try:
+            for item in list_dir[0].iterdir():
+                if not item.is_symlink():
+                    if item.is_dir():
+                        list_dir.append(item.absolute())
+                    elif item.is_file():
+                        if item.name == file_name:
+                            return item.absolute()
+        except:
+            print(f"permission denied: {list_dir[0]}")
         list_dir.pop(0)
     return None
 
-print(bfs_search(p, 'file9'))
+print(bfs_search(p, 'file3'))
