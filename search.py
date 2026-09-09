@@ -1,7 +1,3 @@
-from pathlib import Path
-p = Path("/home/hp/dir1")
-
-
 
 def dfs_search(path, file_name, result=None):
     if result is None:
@@ -30,7 +26,7 @@ def dfs_search(path, file_name, result=None):
 def bfs_search(path, file_name):
     list_dir = [path.absolute()]
     file_visited = 0
-    directory_visited = 1
+    directory_visited = 0
     while len(list_dir) != 0:
         try:
             for item in list_dir[0].iterdir():
@@ -46,5 +42,3 @@ def bfs_search(path, file_name):
         directory_visited += 1
         list_dir.pop(0)
     return {"file_name": None, "file_visited": file_visited, "directory_visited": directory_visited}
-
-print(bfs_search(p, 'file9'))
