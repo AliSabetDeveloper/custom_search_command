@@ -17,8 +17,8 @@ def dfs_search(path, file_name, result=None):
     except:
         print(f"permission denied: {path.absolute()}")
     for sub_dir in sub_dirs:
-        result["directory_visited"] += 1
         result = dfs_search(sub_dir, file_name, result)
+        result["directory_visited"] += 1
         if result["file_name"] is not None:
             return result
     return result
@@ -36,6 +36,7 @@ def bfs_search(path, file_name):
                     elif item.is_file():
                         file_visited += 1
                         if item.name == file_name:
+                            directory_visited += 1
                             return {"file_name": str(item), "file_visited": file_visited, "directory_visited": directory_visited}
         except:
             print(f"permission denied: {list_dir[0]}")
