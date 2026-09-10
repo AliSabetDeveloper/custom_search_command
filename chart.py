@@ -52,6 +52,23 @@ ax3.legend()
 
 plt.savefig("bfs_vs_dfs(time).png")
 
+scenarios = ["1000\ndirectories", "10000\ndirectories", "100000\ndirectories", "200000\ndirectories"]
+bfs_pop_time = [0.0205, 0.1581, 2.0621, 5.6831]
+bfs_deque_time = [0.0203, 0.1507, 1.4303, 2.9518]
+
+x = np.arange(len(scenarios))
+fig4, ax4 = plt.subplots()
+ax4.bar(x - width/2, bfs_pop_time, width, label="BFS pop")
+ax4.bar(x + width/2, bfs_deque_time, width, label="BFS deque")
+
+ax4.set_ylabel("Time (seconds)")
+ax4.set_title("BFS pop vs BFS deque: execution time by growing data")
+ax4.set_xticks(x)
+ax4.set_xticklabels(scenarios)
+ax4.legend()
+
+plt.savefig("bfs_pop_vs_bfs_deque(time).png")
+
 
 
 

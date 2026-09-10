@@ -1,5 +1,5 @@
 import time
-from search import bfs_search, dfs_search
+from search import bfs_search, dfs_search, bfs_search_deque
 from pathlib import Path
 path = Path(input())
 
@@ -9,12 +9,12 @@ if not path.exists() or path.is_file():
 
 file_name = input()
 
-print("Choose search strategy:\n1- BFS\n2- DFS")
+print("Choose search strategy:\n1- BFS\n2- DFS\n3- BFS deque")
 
 number = input()
 
-while number != '1' and number != '2':
-    print("Please enter 1 or 2:")
+while number != '1' and number != '2' and number != '3':
+    print("Please enter 1 or 2 or 3:")
     number = input()
 
 if number == '1':
@@ -22,8 +22,13 @@ if number == '1':
     print(bfs_search(path, file_name))
     elapsed = time.perf_counter() - start
     print(elapsed)
-else:
+elif number == '2':
     start = time.perf_counter()
     print(dfs_search(path, file_name))
+    elapsed = time.perf_counter() - start
+    print(elapsed)
+else:
+    start = time.perf_counter()
+    print(bfs_search_deque(path, file_name))
     elapsed = time.perf_counter() - start
     print(elapsed)
