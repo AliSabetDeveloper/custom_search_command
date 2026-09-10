@@ -4,7 +4,6 @@ def dfs_search(path, file_name, result=None):
         result = {"file_name": None, "file_visited": 0, "directory_visited": 1}
     sub_dirs = []
     try:
-        print(path)
         for item in path.iterdir():
             if not item.is_symlink():
                 if item.is_file():
