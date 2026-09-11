@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import time
 from search import bfs_search, dfs_search, bfs_search_deque
 from pathlib import Path
