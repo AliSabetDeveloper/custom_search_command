@@ -68,9 +68,3 @@ ax4.set_xticklabels(scenarios)
 ax4.legend()
 
 plt.savefig("bfs_pop_vs_bfs_deque(time).png")
-
-
-
-
-
-
